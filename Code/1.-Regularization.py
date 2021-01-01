@@ -76,4 +76,4 @@ if __name__ == "__main__":
     # Hacemos lo mismo con ridge 
     print("="*32)
     print("Coeficientes ridge:")
-    print(modelRidge.coef_) 
+    print(modelRidge.coef_)  

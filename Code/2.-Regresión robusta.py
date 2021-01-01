@@ -1,3 +1,6 @@
+import warnings
+warnings.simplefilter("ignore")
+
 # Importamos pandas
 import pandas as pd 
 # Importamos sklearn y desde el modulo lineal importamos nuestros regressors 
@@ -42,5 +45,12 @@ if __name__ == "__main__":
         # vamos a considerar 
         'HUBER' : HuberRegressor(epsilon=1.35)  
     } 
+
+    for name, estimator in estimadores.items():
+        estimator.fit(X_train, y_train)
+        predictions = estimator.predict(X_test)
+        print("="*64)
+        print(name)
+        print("MSE: ", mean_squared_error(y_test, predictions))
 
 
