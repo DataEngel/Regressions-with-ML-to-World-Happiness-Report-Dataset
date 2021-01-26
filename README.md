@@ -1,55 +1,55 @@
-# Regularización
+# Regularization
  
-Esta técnica consiste en disminuir la complejidad de nuestro modelo a través de una penalización aplicada a sus variables más irrelevantes.
+This technique consists of reducing the complexity of our model through a penalty applied to its most irrelevant variables.
  
-Entonces, la regularización consiste en introducir un poco de sesgo para reducir la varianza de los datos.
+So, regularization consists of introducing a bit of bias to reduce the variance of the data.
  
-![14](https://user-images.githubusercontent.com/63415652/103431691-e0e33c00-4b99-11eb-860a-820e8b70bbc9.PNG)
+![3](https://user-images.githubusercontent.com/63415652/105785289-277d4980-5f40-11eb-8a6e-e9f96bd25307.PNG)
   
-## ¿De qué trata este dataset? 
+## What is this dataset about?
 
-Es una clasificación de qué países del mundo podrían considerarse "felices". Este informe contiene 155 países de cada continente para construir un entendimiento de qué países pueden ser los más felices. Esta clasificación es venerada en todo el mundo, ya que podría ser una indicación de las habilidades de toma de decisiones políticas del país. Expertos de todo el mundo (en economía, psicología y asuntos exteriores) han señalado que estos puntajes pueden ser una buena indicación del progreso de un país, pero por supuesto, no es el fin y el progreso de un país.
+It is a classification of which countries in the world could be considered "happy". This report contains 155 countries from each continent to build an understanding of which countries can be the happiest. This classification is revered around the world as it could be an indication of the country's political decision-making skills. Experts from around the world (in economics, psychology and foreign affairs) have pointed out that these scores can be a good indication of the progress of a country, but of course, it is not the end and the progress of a country.
 
->**_Nota:_** En este readme sólo se mostrarán los resultados, para más detalles ver el código, el la carpeta code de este repo.
+>**_Note:_** In this readme only the results will be shown, for more details see the code, in the code folder of this repo.
 
 ---
 
-## Implementación de regresión lineal, lasso y ridge.  
+## Implementation of linear regression, lasso and ridge.
 
-Ahora vamos a ver cuál técnica nos genera menos pérdida para nuestro análisis: 
+Now we are going to see which technique generates less loss for our analysis:
  
 ![15](https://user-images.githubusercontent.com/63415652/103431748-f147e680-4b9a-11eb-99f6-87e7442d845b.PNG) 
  
-Y como poder ver, la lineal genera menos pérdida. 
+And as you can see, the linear generates less loss.
  
-Ahora veremos los coeficientes:
+Now we will see the coefficients:
  
 ![16](https://user-images.githubusercontent.com/63415652/103431890-10e00e80-4b9d-11eb-808d-5f32015a455a.PNG) 
  
-Esto es un arreglo numérico que tiene el mismo tamaño de las columnas que utilizamos en nuestros features, esto es porque cada uno de los números corresponden uno a uno a las columnas que estamos intentando evaluar y aquí en donde podemos sacar más información relevante, porque cuando encontramos los números más grandes, directamente podemos saber que esa columna es la que más peso está teniendo en el modelo que estamos entrenando.
+This is a numerical arrangement that has the same size as the columns that we use in our features, this is because each of the numbers correspond one by one to the columns that we are trying to evaluate and here where we can get more relevant information, because when We find the largest numbers, we can directly know that this column is the one that is having the most weight in the model we are training.
 
-Por ejemplo en el caso de la regression lasso, el factor económico tiene mucho más peso que las demás variables que el índice de felicidad que se calcula y en este caso, la regression lasso decidió quitar las demás variables ya que nos las encontró determinantes. 
+For example, in the case of the lasso regression, the economic factor has much more weight than the other variables than the happiness index that is calculated and in this case, the lasso regression decided to remove the other variables since it found them determining for us.
  
->**_Conclusión:_** Esto nos abre la puerta a muchas preguntas que tenemos que hacernos sobre nuestros datos, pero eso ya está a nuestro criterio entender esas relaciones complejas y hacer más pruebas para entender específicamente lo qué está pasando. 
+>**_Conclusion:_** This opens the door to many questions that we have to ask ourselves about our data, but that is already at our discretion to understand those complex relationships and do more tests to understand specifically what is happening.
  
-# Regresiones robustas. 
+# Robust regressions.
  
-**Ransac:** selecciona una muestra aleatoria de los datos asumiendo que esa muestra se encuentra dentro de los valores inliners, con estos datos se entrena el modelo y se compara su comportamiento con respecto a los otros datos. Este procedimiento se repite tantas veces como se indique y al finalizar el algoritmo escoge la combinación de datos que tenga la mejor cantidad de inliners, donde los valores atípicos puedan ser discriminados de forma efectiva.
+**Ransac:** selects a random sample of the data assuming that this sample is within the inliners values, with these data the model is trained and its behavior is compared with the other data. This procedure is repeated as many times as indicated and at the end of the algorithm it chooses the combination of data that has the best number of inliners, where the outliers can be effectively discriminated.
  
 ![17](https://user-images.githubusercontent.com/63415652/103431940-d75bd300-4b9d-11eb-9ba2-5d549e0b440e.PNG)
  
-**Huber Reggresor:** no elimina los valores atípicos sino que los penaliza. Realiza el entrenamiento y si el error absoluto de la pérdida alcanza cierto umbral (epsilon) los datos son tratados como atípicos. El valor por defecto de epsilon es 1.35 ya que se ha demostrado que logra un 95% de eficiencia estadística.
+**Huber Reggresor:** does not remove outliers but penalizes them. Perform the training and if the absolute error of the loss reaches a certain threshold (epsilon) the data is treated as outliers. The default value for epsilon is 1.35 as it has been shown to achieve 95% statistical efficiency.
  
-Ahora pasaremos a hacer una regresión robusta introduciendo algunos datos corruptos, para lidiar con ellos de una manera efectiva.
+Now we will go on to do a robust regression introducing some corrupted data, to deal with it effectively.
  
 ![18](https://user-images.githubusercontent.com/63415652/103432212-09226900-4ba1-11eb-9def-deac0a86ca20.PNG)
  
-La modificación que se hizo fue agregar valores en nuestro dataset en ceros, de tal manera esto podría confundir a nuestros modelos si no están bien entrenados o si no hemos trabajado con esos valores atípicos antes. 
+The modification that was made was to add values in our dataset in zeros, in such a way this could confuse our models if they are not well trained or if we have not worked with those outliers before.
  
-### Ahora vamos a aplicar Ransac y Huber:
+### Now we are going to apply Ransac and Huber:
  
 ![19](https://user-images.githubusercontent.com/63415652/103432432-4b00de80-4ba4-11eb-97df-38a34e4a0e6e.PNG) 
  
-Como podemos ver en los resultados, tanto RANSAC como HUBER tienen un error mucho menor que la SVR. 
+As we can see from the results, both RANSAC and HUBER have a much smaller error than SVR.
  
->**_Conclusión:_** Aquí claramente podemos ver como los valores atípicos si afectan el desempeño de nuestro modelo, por lo tanto siempre será importante tomar alguna medida de precaución para poder lidiar con este proceso de una manera satisfactoria.  
+>**_Conclusion:_** Here we can clearly see how the outliers do affect the performance of our model, therefore it will always be important to take some precautionary measure to be able to deal with this process in a satisfactory way.  
