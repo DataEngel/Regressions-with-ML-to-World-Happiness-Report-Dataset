@@ -1,11 +1,3 @@
-# Regularization
- 
-This technique consists of reducing the complexity of our model through a penalty applied to its most irrelevant variables.
- 
-So, regularization consists of introducing a bit of bias to reduce the variance of the data.
- 
-![3](https://user-images.githubusercontent.com/63415652/105785289-277d4980-5f40-11eb-8a6e-e9f96bd25307.PNG)
-  
 ## What is this dataset about?
 
 It is a classification of which countries in the world could be considered "happy". This report contains 155 countries from each continent to build an understanding of which countries can be the happiest. This classification is revered around the world as it could be an indication of the country's political decision-making skills. Experts from around the world (in economics, psychology and foreign affairs) have pointed out that these scores can be a good indication of the progress of a country, but of course, it is not the end and the progress of a country.
@@ -13,6 +5,15 @@ It is a classification of which countries in the world could be considered "happ
 >**_Note:_** In this readme only the results will be shown, for more details see the code, in the code folder of this repo.
 
 ---
+
+# Regularization
+ 
+This technique consists of reducing the complexity of our model through a penalty applied to its most irrelevant variables.
+ 
+So, regularization consists of introducing a bit of bias to reduce the variance of the data.
+ 
+![3](https://user-images.githubusercontent.com/63415652/105785289-277d4980-5f40-11eb-8a6e-e9f96bd25307.PNG)
+
 
 ## Implementation of linear regression, lasso and ridge.
 
