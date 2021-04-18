@@ -53,3 +53,12 @@ The modification that was made was to add values in our dataset in zeros, in suc
 As we can see from the results, both RANSAC and HUBER have a much smaller error than SVR.
  
 >**_Conclusion:_** Here we can clearly see how the outliers do affect the performance of our model, therefore it will always be important to take some precautionary measure to be able to deal with this process in a satisfactory way.  
+
+## Data source: [World Happiness Report](https://www.kaggle.com/unsdsn/world-happiness)
+
+Although the code is not proprietary and is free to use, the data is licensed, please read it before using this data.
+This project is not for commercial purposes, it is for academic purposes only.
+
+## You can check the main notebook in my kaggle profile and if you like, my other contributions too:
+
+* [Robust Regressions in World Happiness Report DataSet](https://www.kaggle.com/dataengel/robust-regressions-in-world-happiness-report) 
