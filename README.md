@@ -1,59 +1,30 @@
-## What is this dataset about?
+# World Happiness Report 
 
-It is a classification of which countries in the world could be considered "happy". This report contains 155 countries from each continent to build an understanding of which countries can be the happiest. This classification is revered around the world as it could be an indication of the country's political decision-making skills. Experts from around the world (in economics, psychology and foreign affairs) have pointed out that these scores can be a good indication of the progress of a country, but of course, it is not the end and the progress of a country.
+## Context
 
->**_Note:_** In this readme only the results will be shown, for more details see the code, in the code folder of this repo.
+The World Happiness Report is a landmark survey of the state of global happiness. The first report was published in 2012, the second in 2013, the third in 2015, and the fourth in the 2016 Update. The World Happiness 2017, which ranks 155 countries by their happiness levels, was released at the United Nations at an event celebrating International Day of Happiness on March 20th. The report continues to gain global recognition as governments, organizations and civil society increasingly use happiness indicators to inform their policy-making decisions. Leading experts across fields – economics, psychology, survey analysis, national statistics, health, public policy and more – describe how measurements of well-being can be used effectively to assess the progress of nations. The reports review the state of happiness in the world today and show how the new science of happiness explains personal and national variations in happiness.
 
----
+## Content
 
-# Regularization
- 
-This technique consists of reducing the complexity of our model through a penalty applied to its most irrelevant variables.
- 
-So, regularization consists of introducing a bit of bias to reduce the variance of the data.
- 
-![3](https://user-images.githubusercontent.com/63415652/105785289-277d4980-5f40-11eb-8a6e-e9f96bd25307.PNG)
+The happiness scores and rankings use data from the Gallup World Poll. The scores are based on answers to the main life evaluation question asked in the poll. This question, known as the Cantril ladder, asks respondents to think of a ladder with the best possible life for them being a 10 and the worst possible life being a 0 and to rate their own current lives on that scale. The scores are from nationally representative samples for the years 2013-2016 and use the Gallup weights to make the estimates representative. The columns following the happiness score estimate the extent to which each of six factors – economic production, social support, life expectancy, freedom, absence of corruption, and generosity – contribute to making life evaluations higher in each country than they are in Dystopia, a hypothetical country that has values equal to the world’s lowest national averages for each of the six factors. They have no impact on the total score reported for each country, but they do explain why some countries rank higher than others.
 
+## Inspiration
+What countries or regions rank the highest in overall happiness and each of the six factors contributing to happiness? How did country ranks or scores change between the 2015 and 2016 as well as the 2016 and 2017 reports? Did any country experience a significant increase or decrease in happiness?
 
-## Implementation of linear regression, lasso and ridge.
+### What is Dystopia?
 
-Now we are going to see which technique generates less loss for our analysis:
- 
-![15](https://user-images.githubusercontent.com/63415652/103431748-f147e680-4b9a-11eb-99f6-87e7442d845b.PNG) 
- 
-And as you can see, the linear generates less loss.
- 
-Now we will see the coefficients:
- 
-![16](https://user-images.githubusercontent.com/63415652/103431890-10e00e80-4b9d-11eb-808d-5f32015a455a.PNG) 
- 
-This is a numerical arrangement that has the same size as the columns that we use in our features, this is because each of the numbers correspond one by one to the columns that we are trying to evaluate and here where we can get more relevant information, because when We find the largest numbers, we can directly know that this column is the one that is having the most weight in the model we are training.
+Dystopia is an imaginary country that has the world’s least-happy people. The purpose in establishing Dystopia is to have a benchmark against which all countries can be favorably compared (no country performs more poorly than Dystopia) in terms of each of the six key variables, thus allowing each sub-bar to be of positive width. The lowest scores observed for the six key variables, therefore, characterize Dystopia. Since life would be very unpleasant in a country with the world’s lowest incomes, lowest life expectancy, lowest generosity, most corruption, least freedom and least social support, it is referred to as “Dystopia,” in contrast to Utopia.
 
-For example, in the case of the lasso regression, the economic factor has much more weight than the other variables than the happiness index that is calculated and in this case, the lasso regression decided to remove the other variables since it found them determining for us.
- 
->**_Conclusion:_** This opens the door to many questions that we have to ask ourselves about our data, but that is already at our discretion to understand those complex relationships and do more tests to understand specifically what is happening.
- 
-# Robust regressions.
- 
-**Ransac:** selects a random sample of the data assuming that this sample is within the inliners values, with these data the model is trained and its behavior is compared with the other data. This procedure is repeated as many times as indicated and at the end of the algorithm it chooses the combination of data that has the best number of inliners, where the outliers can be effectively discriminated.
- 
-![17](https://user-images.githubusercontent.com/63415652/103431940-d75bd300-4b9d-11eb-9ba2-5d549e0b440e.PNG)
- 
-**Huber Reggresor:** does not remove outliers but penalizes them. Perform the training and if the absolute error of the loss reaches a certain threshold (epsilon) the data is treated as outliers. The default value for epsilon is 1.35 as it has been shown to achieve 95% statistical efficiency.
- 
-Now we will go on to do a robust regression introducing some corrupted data, to deal with it effectively.
- 
-![18](https://user-images.githubusercontent.com/63415652/103432212-09226900-4ba1-11eb-9def-deac0a86ca20.PNG)
- 
-The modification that was made was to add values in our dataset in zeros, in such a way this could confuse our models if they are not well trained or if we have not worked with those outliers before.
- 
-### Now we are going to apply Ransac and Huber:
- 
-![19](https://user-images.githubusercontent.com/63415652/103432432-4b00de80-4ba4-11eb-97df-38a34e4a0e6e.PNG) 
- 
-As we can see from the results, both RANSAC and HUBER have a much smaller error than SVR.
- 
->**_Conclusion:_** Here we can clearly see how the outliers do affect the performance of our model, therefore it will always be important to take some precautionary measure to be able to deal with this process in a satisfactory way.  
+### What are the residuals?
+
+The residuals, or unexplained components, differ for each country, reflecting the extent to which the six variables either over- or under-explain average 2014-2016 life evaluations. These residuals have an average value of approximately zero over the whole set of countries. Figure 2.2 shows the average residual for each country when the equation in Table 2.1 is applied to average 2014- 2016 data for the six variables in that country. We combine these residuals with the estimate for life evaluations in Dystopia so that the combined bar will always have positive values. As can be seen in Figure 2.2, although some life evaluation residuals are quite large, occasionally exceeding one point on the scale from 0 to 10, they are always much smaller than the calculated value in Dystopia, where the average life is rated at 1.85 on the 0 to 10 scale.
+
+What do the columns succeeding the Happiness Score(like Family, Generosity, etc.) describe?
+
+The following columns: GDP per Capita, Family, Life Expectancy, Freedom, Generosity, Trust Government Corruption describe the extent to which these factors contribute in evaluating the happiness in each country.
+The Dystopia Residual metric actually is the Dystopia Happiness Score(1.85) + the Residual value or the unexplained value for each country as stated in the previous answer.
+
+If you add all these factors up, you get the happiness score so it might be un-reliable to model them to predict Happiness Scores.
 
 ## Data source: [World Happiness Report](https://www.kaggle.com/unsdsn/world-happiness)
 
